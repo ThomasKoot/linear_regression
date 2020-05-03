@@ -1,206 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+<title>Linear regression</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=performance.now"></script>
 <script src="p5.js"></script>
-<script src="p5.sound.js"></script>
 <script src="sketch.js"></script>
-
-<style>
-body {
-  background: #333333;
-
-}
-
-h1 {
-  margin: 0;
-  margin-top: 0px;
-  color: white;
-  text-shadow: 0px 0px 5px #000000;
-  border-color: black;
-  font-size: 60px;
-  font-family: 'arial black';
-  letter-spacing: 2px;
-} 
-
-p {
-  text-align: center;
-  font-weight: bold;
-  font-size: 20px;
-  color: white;
-  margin-top: 0px;
-}
-
-.button_class {
-  background: white;
-  border-style: solid;
-  border-width: 5px;
-  border-color: #AE0000;
-  color: black;
-  min-width: 130px;
-  border-radius: 50%;
-  width: 130px;
-  height: 130px;
-  padding: 10px
-  text-align: center;
-  text-decoration: none;
-  font-size: 14px;
-  font-family: 'arial black';
-}
-
-.button_class:hover{
-  background: #333333;
-  color: white;
-}
-
-#slider-div{
-  margin: auto; 
-  width: 500px;
-}
-
-input[type=range] {
-  text-align: center;
-  height: 29px;
-  -webkit-appearance: none;
-  margin: auto;
-  margin-top: 20px;
-  width: 500px;
-  background: rgba(1,1,1, 0);
-}
-input[type=range]:focus {
-  outline: none;
-}
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 20px;
-  cursor: pointer;
-  animate: 0.2s;
-  background: #FFFFFF;
-  border-radius: 10px;
-  border: 1px solid #D3D3D3;
-}
-input[type=range]::-webkit-slider-thumb {
-  border: 1px solid #000000;
-  height: 40px;
-  width: 40px;
-  border-radius: 20px;
-  background: #AE0000;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -10px;
-}
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #37A925;
-}
-input[type=range]::-moz-range-track {
-  width: 100%;
-  height: 20px;
-  cursor: pointer;
-  animate: 0.2s;
-  background: #FFFFFF;
-  border-radius: 10px;
-  border: 1px solid #D3D3D3;
-}
-input[type=range]::-moz-range-thumb {
-  border: 1px solid #000000;
-  height: 40px;
-  width: 40px;
-  border-radius: 20px;
-  background: #AE0000;
-  cursor: pointer;
-  margin-top: -10px;
-}
-input[type=range]::-ms-track {
-  width: 100%;
-  height: 10px;
-  cursor: pointer;
-  animate: 0.2s;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-}
-input[type=range]::-ms-fill-lower {
-  background: #37A925;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  box-shadow: 1px 1px 1px #000000;
-}
-input[type=range]::-ms-fill-upper {
-  background: #37A925;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  box-shadow: 1px 1px 1px #000000;
-}
-input[type=range]::-ms-thumb {
-  margin-top: 1px;
-  box-shadow: 1px 1px 1px #000000;
-  border: 2px solid #000000;
-  height: 20px;
-  width: 23px;
-  border-radius: 7px;
-  background: #FFFFFF;
-  cursor: pointer;
-}
-
-
-#container {
-  width:100%;
-  display: flex;
-
-}
-
-#reset-div {
-  width: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#generate-div {
-  width: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-}
-
-#sketch-div{
-  border-style: solid;
-  border-width: 10px;
-  border-color: #AE0000;
-  border-radius: 15px;
-  margin: auto; 
-  width: 500px;
-  height: 500px;
-  box-shadow: 0px 0px 18px #888888;
-}
-
-#dummy-div{
-  width: 15%;
-}
-
-#split-div{
-  min-width: 50px;
-}
-
-
-</style>
-
+<link rel="stylesheet" type="text/css" href="theme.css">
 </head>
+
 <body>
 <h1 style="text-align:center;">LINEAR REGRESSION</h1>
 
-
 <div id="container">
-  <div id="dummy-div"></div>
-  <div id="reset-div"></div>
-  <div id="split-div"></div>
+  <div class="dummy_div"></div>
+  <div class="main_sides"> 
+    <div class="top_left_button_div">
+      <button id="home" class ="main_button" onclick="document.location = 'www.nos.nl'">HOME</button>
+    </div>
+    <div id="reset-div">
+      <div class='main_filler'></div>  
+    </div>
+    <div class='main_filler'></div>  
+  </div>
+  
+  <div class="split_div"></div>
   <div id="sketch-div"></div> 
-  <div id="split-div"></div>
-  <div id="generate-div"></div>
-  <div id="dummy-div"></div>
+  <div class="split_div"></div>
+  
+  <div class="main_sides"> 
+    <div id='info_button' class="top_right_button_div">
+    </div>
+    <div id="generate-div">
+      <div class='main_filler'></div>  
+    </div>
+    <div id='extra_info' class='main_filler'>
+      <p style="order:3;">LEARNING RATE</p>
+    </div>  
+  </div>  
+  <div class="dummy_div"></div>
 </div>
-<div id="slider-div"></div>
 
 </body>
 </html>
